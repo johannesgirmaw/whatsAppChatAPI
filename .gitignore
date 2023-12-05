@@ -1,0 +1,16 @@
+chatEnv/
+db.sqlite3
+
+.venv/
+.env
+target/
+runserver.sh
+run.sh
+media/
+createsuperuser.sh
+migrations/
+__pycache__/
+node_modules/
+run_railway.sh
+package.json
+package-lock.json
