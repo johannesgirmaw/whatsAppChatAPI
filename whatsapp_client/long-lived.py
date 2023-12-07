@@ -70,11 +70,15 @@ def on_error(ws, error):
 
 def on_close(ws, close_status_code, close_msg):
     print("### closed ###")
-
+    # ws.close()
+    
 def on_open(ws):
     print("Opened connection")
-    val = input("Please enter your message: ")
-    ws.send(f"Client:yes please, '{val}'!")
+    while True:
+        val = input("Please enter your message: ")
+        if val == "exit":
+            break
+        ws.send(f"Client:yes please, '{val}'!")
 
 if __name__ == "__main__":
     websocket.enableTrace(True)
@@ -90,12 +94,11 @@ if __name__ == "__main__":
             headers = {
             "Authorization": f"Token {token}"
             }
-            room_options = ["1 - Join:", "2 - Create Chatroom:"]
+            room_options = ["1 - Join Chatroom(Select from the list):", "2 - Create Chatroom:"]
             for option in room_options:
                 print(option )    
             chose_val = int(input("Please choose:"))
             chat_room_id = 0
-            print(chose_val)
             
             if  chose_val == 1:
                 for i in get_chat_room_list():
